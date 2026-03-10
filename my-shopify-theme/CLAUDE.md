@@ -1,0 +1,1 @@
+/Users/Katie/Documents/GitHub/shopify-project/my-shopify-theme/AGENTS.md

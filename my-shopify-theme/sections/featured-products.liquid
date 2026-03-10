@@ -1,0 +1,40 @@
+<section class="featured-products">
+  <h2 class="section-title">Featured Products</h2>
+  <div class="products-grid">
+    {% for product in collections.frontpage.products %}
+      <div class="product-card">
+        <a href="{{ product.url }}">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          {% elsif product.images.size > 0 %}
+            <!-- fallback to first image if no featured_image -->
+            <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}">
+          {% else %}
+            <!-- placeholder image -->
+            <img src="https://via.placeholder.com/300x300?text=No+Image" alt="No Image">
+          {% endif %}
+          <h3>{{ product.title }}</h3>
+        </a>
+        <p class="price">{{ product.price | money }}</p>
+
+        {% if product.available %}
+          <button class="add-to-cart" onclick="window.location.href='{{ product.url }}'">Add to Cart</button>
+        {% else %}
+          <span class="sold-out">Sold Out</span>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}
