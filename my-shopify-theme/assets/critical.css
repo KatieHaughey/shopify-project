@@ -122,7 +122,7 @@ body {
   color: #fff;
 }
 .hero h1 {
-  font-size: 48px;
+  font-size: min(10vw, 48px);
   margin-bottom: 20px;
 }
 .hero p {
